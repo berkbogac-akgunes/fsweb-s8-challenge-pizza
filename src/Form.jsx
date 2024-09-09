@@ -101,6 +101,17 @@ function Form() {
         console.log(formData)
     return(
         <div className = "form">
+            <section className = "menu-content">
+                <h4>{"{Menu İsmi}"}</h4>
+                <div className = "menu-info">
+                <p className = "menu-fiyat">{"{Menu Fiyatı}"}</p>
+                    <div className = "menu-info-right">
+                        <p>{"{Menu Puanı}"}</p>
+                        <p>{"{Menu Puanı}"}</p>
+                    </div>
+                </div>
+                <p className = "menu-aciklamasi">{"{Menu Açıklaması}"}</p>
+            </section>
         <div className = "boyut-hamur-section">
         <section className = "boyut-section">
         <h3>Boyut Seç</h3>

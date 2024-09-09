@@ -63,7 +63,10 @@
 
 .siparis-notu {
     margin: 4rem auto;
+    padding: 0 0 2rem 0;
     width: 95%;
+    border-bottom: 1px solid #292929;
+    
 }
 
 .siparis-notu textarea {
@@ -72,4 +75,20 @@
     border-radius: 10px;
     display: flex;
     padding: .9rem 0 0 1rem;
+}
+
+.adet-section button {
+    color: black;
+    background-color: #FDC913;
+}
+
+.adet-section {
+    border: 1px solid #FDC913;
+    width: 18%;
+    border-radius: 7px;
+}
+
+.adet-section p {
+    height: 1.2rem;
+    padding: .5rem 0 0 0;
 }

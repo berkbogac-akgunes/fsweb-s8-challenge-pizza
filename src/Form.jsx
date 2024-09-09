@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import "./Form.css"
-import { Label } from "reactstrap"
+import { Button, ButtonGroup, Label } from "reactstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Check from "./Check"
 
@@ -13,6 +13,17 @@ const initialForm = {
 
 function Form() {
     const [formData, setFormData] = useState(initialForm)
+    const [count, setCount] = useState(0);
+
+    const increaseCount = () => { 
+        setCount(count + 1); 
+      }; 
+     
+      const decreaseCount = () => {
+        if (count > 0) {
+            setCount(count - 1);
+        } 
+      }; 
 
     const ing = [{
         value: "pepperoni",
@@ -154,6 +165,17 @@ function Form() {
     onChange = {handleChange} 
     placeholder="Siparişine eklemek istediğin bir not var mı?">
     </textarea>
+    </section>
+    <section className = "adet-section">
+    <ButtonGroup>
+        <Button onClick = {decreaseCount} className = "decrease-button">
+            -
+        </Button>
+        <p>{count}</p>
+        <Button onClick = {increaseCount} className = "increase-button">
+            +
+        </Button>
+</ButtonGroup>
     </section>
     </div>
     )

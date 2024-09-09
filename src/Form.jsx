@@ -166,6 +166,7 @@ function Form() {
     placeholder="Siparişine eklemek istediğin bir not var mı?">
     </textarea>
     </section>
+    <div className = "bottom-page">
     <section className = "adet-section">
     <ButtonGroup>
         <Button onClick = {decreaseCount} className = "decrease-button">
@@ -177,6 +178,21 @@ function Form() {
         </Button>
 </ButtonGroup>
     </section>
+    <section className = "siparis-section">
+        <h5>Sipariş Toplamı</h5>
+        <div className = "secimler-fiyat-section">
+            <p>Seçimler</p>
+            <p>{"{Price}"}</p>
+        </div>
+        <div className = "toplam-fiyat-section">
+        <p>Toplam</p>
+        <p>{"{Price}"}</p>
+        </div>
+        <Button>
+            SİPARİŞ VER
+        </Button>
+    </section>
+    </div>
     </div>
     )
 }

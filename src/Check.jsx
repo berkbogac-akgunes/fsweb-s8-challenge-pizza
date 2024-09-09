@@ -1,17 +1,23 @@
 import { Label } from "reactstrap"
 
-function Check({ changeFn, isChecked, groupName, value, label }) {
+function Check(props) {
+
+    const { changeFn, isChecked, groupName, value, label } = props
+    
     return(
+        <>
         <Label>
             <input
             type = "checkbox"
             name = {groupName}
+            label = {label}
             value = {value}
-            //onChange = {changeFn}
-            //checked = {isChecked}
+            onChange = {changeFn}
+            checked = {isChecked}
             />{' '}
             {label}
         </Label>
+        </>
     )
 }
 

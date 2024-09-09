@@ -5,7 +5,7 @@ function Header(props) {
         <>
         <header>
             <h1>Teknolojik Yemekler</h1>
-            <p>placeholder for selections</p>
+            <p>Anasayfa - Seçenekler - Sipariş Oluştur</p>
         </header>
       </>
     )

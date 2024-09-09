@@ -7,7 +7,8 @@ import Check from "./Check"
 const initialForm = {
     boyut: "",
     hamur: "",
-    malzemeler: []
+    malzemeler: [],
+    siparisNotu: ""
 }
 
 function Form() {
@@ -67,8 +68,26 @@ function Form() {
     }]
 
     function handleChange(event) {
-        //...
-    }
+        let { name, value, type, checked } = event.target;
+
+        if (type === 'checkbox') {
+            if (formData.malzemeler.includes(value)) {
+              setFormData({
+                ...formData,
+                [name]: formData.malzemeler.filter((malzeme) => malzeme !== value),
+              });
+            } else {
+              setFormData({
+                ...formData,
+                [name]: [...formData.malzemeler, value],
+              });
+            }
+          } else {
+            setFormData({ ...formData, [name]: value });
+          }
+        }
+
+        console.log(formData)
     return(
         <div className = "form">
         <div className = "boyut-hamur-section">
@@ -79,6 +98,7 @@ function Form() {
                     type = "radio"
                     name = "boyut"
                     value = "small"
+                    onChange = {handleChange}
                 />
                 Küçük
             </Label>
@@ -87,6 +107,7 @@ function Form() {
                     type = "radio"
                     name = "boyut"
                     value = "medium"
+                    onChange = {handleChange}
                 />
                 Orta
             </Label>
@@ -95,13 +116,14 @@ function Form() {
                     type = "radio"
                     name = "boyut"
                     value = "large"
+                    onChange = {handleChange}
                 />
                 Büyük
             </Label>
     </section>
     <section className = "hamur-section">
     <h3>Hamur Seç</h3>
-    <select name = "hamur">
+    <select onChange = {handleChange} name = "hamur">
         <option disabled hidden selected>Hamur Kalınlığı</option>
         <option value = "thin">İnce Hamur</option>
         <option value = "thick">Kalın Hamur</option>
@@ -112,17 +134,28 @@ function Form() {
     <h3>Ek Malzemeler</h3>
     <p>En Fazla 10 Malzeme Seçebilirsiniz. 5₺</p>
     <div className = "check">
-        {ing.map((malzeme) => <Check
+        {ing.map((malzeme, index) => <Check
+            key = {index}
+            type = "checkbox"
+            changeFn = {handleChange}
+            isChecked = {formData.malzemeler.includes(malzeme.value)}
             groupName = "malzemeler"
-            value = {malzeme.value} 
+            value = {malzeme.value}
             label = {malzeme.label}
-            //changefn = {handleChange} 
-            //isChecked = {formData.malzemeler.includes(malzeme.value)} 
-            />
-    )}
+        />
+        )}
     </div>
     </section>
-        </div>
+    <section className = "siparis-notu">
+    <h3>Sipariş Notu</h3>
+    <textarea
+    name = "siparisNotu"
+    type = "textarea" 
+    onChange = {handleChange} 
+    placeholder="Siparişine eklemek istediğin bir not var mı?">
+    </textarea>
+    </section>
+    </div>
     )
 }
 

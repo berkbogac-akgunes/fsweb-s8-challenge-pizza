@@ -60,3 +60,16 @@
 .malzemeler Input {
     margin: .3rem;
 }
+
+.siparis-notu {
+    margin: 4rem auto;
+    width: 95%;
+}
+
+.siparis-notu textarea {
+    width: 100%;
+    height: 3.5rem;
+    border-radius: 10px;
+    display: flex;
+    padding: .9rem 0 0 1rem;
+}

@@ -1,0 +1,27 @@
+  header h1 {
+    width: 40rem;
+    text-align: center;
+    font-size: 3rem;
+    color: white;
+    font-family: "Quattrocento";
+    font-weight: 700;
+  }
+  
+  header p {
+    width: 40rem;
+    margin: 0 auto;
+    padding: 2rem 0 0 10rem;
+    display: flex;
+    justify-content: left;
+    font-size: 1.1rem;
+    color: white;
+  }
+  
+  header {
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #CE2829;
+  }

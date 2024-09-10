@@ -12,6 +12,10 @@ const initialForm = {
     isim: ""
 }
 
+const errorMessages = {
+    isim: 'İsim en az 3 harf olmalı.',
+}
+
 function Form() {
     const [formData, setFormData] = useState(initialForm)
     const [count, setCount] = useState(0);
@@ -19,8 +23,10 @@ function Form() {
         boyut: false,
         hamur: false,
         malzemeler: false,
-        isim: false
+        isim: false,
+        count: false
     })
+    console.log(errors)
     const [isValid, setIsValid] = useState(false)
 
     const increaseCount = () => { 
@@ -171,7 +177,7 @@ function Form() {
     </div>
     <section className = "malzemeler">
     <h3>Ek Malzemeler</h3>
-    <p>En Fazla 10 Malzeme Seçebilirsiniz. 5₺</p>
+    <p>En Az 4, En Fazla 10 Malzeme Seçebilirsiniz. 5₺</p>
     <div className = "check">
         {ing.map((malzeme, index) => <Check
             key = {index}
@@ -195,6 +201,7 @@ function Form() {
             onChange={handleChange}
             />
     </section>
+    <p className = "error">{errors.isim && errorMessages.isim}</p>
     <section className = "siparis-notu">
     <h3>Sipariş Notu</h3>
     <textarea

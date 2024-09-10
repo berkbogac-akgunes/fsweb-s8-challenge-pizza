@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import "./Form.css"
-import { Button, ButtonGroup, Label } from "reactstrap"
+import { Button, ButtonGroup, FormFeedback, Label } from "reactstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Check from "./Check"
 
@@ -8,12 +8,20 @@ const initialForm = {
     boyut: "",
     hamur: "",
     malzemeler: [],
-    siparisNotu: ""
+    siparisNotu: "",
+    isim: ""
 }
 
 function Form() {
     const [formData, setFormData] = useState(initialForm)
     const [count, setCount] = useState(0);
+    const [errors, setErrors] = useState({
+        boyut: false,
+        hamur: false,
+        malzemeler: false,
+        isim: false
+    })
+    const [isValid, setIsValid] = useState(false)
 
     const increaseCount = () => { 
         setCount(count + 1); 
@@ -96,7 +104,15 @@ function Form() {
           } else {
             setFormData({ ...formData, [name]: value });
           }
+
+        if(name === "isim") {
+            if(value.length < 3) {
+                setErrors({...errors, [name]: true})
+            } else {
+                setErrors({...errors, [name]: false})
+            }
         }
+    }
 
         console.log(formData)
     return(
@@ -139,6 +155,7 @@ function Form() {
                     name = "boyut"
                     value = "large"
                     onChange = {handleChange}
+                    invalid = {true}
                 />
                 Büyük
             </Label>
@@ -167,6 +184,16 @@ function Form() {
         />
         )}
     </div>
+    </section>
+    <section className = "isim-info">
+        <p>Sipariş Verenin Adı Soyadı:</p>
+        <input
+            placeholder = "İsminizi buraya yazınız."
+            type="text"
+            name="isim"
+            value={formData.isim}
+            onChange={handleChange}
+            />
     </section>
     <section className = "siparis-notu">
     <h3>Sipariş Notu</h3>

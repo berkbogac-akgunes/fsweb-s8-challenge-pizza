@@ -62,7 +62,7 @@
 }
 
 .siparis-notu {
-    margin: 4rem auto;
+    margin: 1.2rem 1rem 2rem 1rem;
     padding: 0 0 2rem 0;
     width: 95%;
     border-bottom: 1px solid #292929;
@@ -160,4 +160,14 @@ margin: 1.2rem 0 2.5rem 1rem;
 
 .menu-aciklamasi {
     margin: 0 0 2.5rem .8rem;
+}
+
+.isim-info {
+    display: flex;
+    align-items: start;
+    margin: 3rem 0 0 0;
+}
+
+.isim-info p {
+    font-size: 1.2rem;
 }

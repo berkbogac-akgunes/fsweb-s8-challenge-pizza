@@ -98,8 +98,8 @@ function Form() {
         if(
             formData.boyut && 
             formData.hamur &&
-            formData.isim.replaceAll(" ", "").length >= 3 &&
-            formData.malzemeler.length <= 2 || formData.malzemeler.length >= 10
+            formData.isim.replaceAll(" ", "").length >= 3
+            //formData.malzemeler.length <= 2 || formData.malzemeler.length >= 10
         ) {
             setIsValid(true)
         } else {
@@ -158,14 +158,14 @@ function Form() {
             }
         }
 
-        if(name === "malzemeler") {
+        {/*if(name === "malzemeler") {
             if(formData.malzemeler.length < 4 || formData.malzemeler.length > 10) {
                 //there is a problem here with checks? Prob about Async State
                 setErrors({...errors, [name]: true})
             } else {
                 setErrors({...errors, [name]: false})
             }
-        }
+        }*/}
     }
 
     function handleSubmit(event) {

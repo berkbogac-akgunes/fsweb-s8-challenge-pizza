@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import "./Form.css"
 import { Button, ButtonGroup, FormFeedback, Label } from "reactstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Check from "./Check"
+import axios from "axios"
 
 const initialForm = {
     boyut: "",
@@ -14,17 +15,17 @@ const initialForm = {
 
 const errorMessages = {
     isim: 'İsim en az 3 harf olmalı.',
+    malzemeler: "Lütfen en az 4, en fazla 10 malzeme seçiniz."
 }
 
 function Form() {
     const [formData, setFormData] = useState(initialForm)
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
     const [errors, setErrors] = useState({
-        boyut: false,
-        hamur: false,
+        boyut: true,
+        hamur: true,
         malzemeler: false,
         isim: false,
-        count: false
     })
     console.log(errors)
     const [isValid, setIsValid] = useState(false)
@@ -34,7 +35,7 @@ function Form() {
       }; 
      
       const decreaseCount = () => {
-        if (count > 0) {
+        if (count > 1) {
             setCount(count - 1);
         } 
       }; 
@@ -92,6 +93,20 @@ function Form() {
         label: "Sarımsak"
     }]
 
+
+    useEffect(() => {
+        if(
+            formData.boyut && 
+            formData.hamur &&
+            formData.isim.replaceAll(" ", "").length >= 3 &&
+            formData.malzemeler.length <= 2 || formData.malzemeler.length >= 10
+        ) {
+            setIsValid(true)
+        } else {
+            setIsValid(false)
+        }
+    }, [formData])
+
     function handleChange(event) {
         let { name, value, type, checked } = event.target;
 
@@ -112,7 +127,40 @@ function Form() {
           }
 
         if(name === "isim") {
-            if(value.length < 3) {
+            if(value.replaceAll(" ", "").length < 3) {
+                setErrors({...errors, [name]: true})
+            } else {
+                setErrors({...errors, [name]: false})
+            }
+        }
+
+        if(name === "boyut") {
+            if(value) {
+                setErrors({...errors, [name]: false})
+            } else {
+                setErrors({...errors, [name]: true})
+            }
+        }
+
+        if(name === "hamur") {
+            if(value) {
+                setErrors({...errors, [name]: false})
+            } else {
+                setErrors({...errors, [name]: true})
+            }
+        }
+
+        if(name === "hamur") {
+            if(value) {
+                setErrors({...errors, [name]: false})
+            } else {
+                setErrors({...errors, [name]: true})
+            }
+        }
+
+        if(name === "malzemeler") {
+            if(formData.malzemeler.length < 4 || formData.malzemeler.length > 10) {
+                //there is a problem here with checks? Prob about Async State
                 setErrors({...errors, [name]: true})
             } else {
                 setErrors({...errors, [name]: false})
@@ -120,9 +168,27 @@ function Form() {
         }
     }
 
-        console.log(formData)
+    function handleSubmit(event) {
+        event.preventDefault();
+        axios
+          .post('https://reqres.in/api/pizza', formData)
+          .then((response) => {
+            console.log(
+                {
+                    "isim": response.data.isim,
+                    "boyut": response.data.boyut,
+                    "malzemeler": response.data.malzemeler,
+                    "hamur": response.data.hamur,
+                    "siparisNotu": response.data.siparisNotu
+                }
+            )
+          })
+          .catch((error) => {
+            console.log(error.message)
+          });
+      }
     return(
-        <div className = "form">
+        <form className = "form" onSubmit={handleSubmit}>
             <section className = "menu-content">
                 <h4>{"{Menu İsmi}"}</h4>
                 <div className = "menu-info">
@@ -165,6 +231,7 @@ function Form() {
                 />
                 Büyük
             </Label>
+            <p className = "error">{errors.boyut && errorMessages.boyut}</p>
     </section>
     <section className = "hamur-section">
     <h3>Hamur Seç</h3>
@@ -189,6 +256,7 @@ function Form() {
             label = {malzeme.label}
         />
         )}
+        <p className = "error">{errors.malzemeler && errorMessages.malzemeler}</p>
     </div>
     </section>
     <section className = "isim-info">
@@ -233,12 +301,12 @@ function Form() {
         <p>Toplam</p>
         <p>{"{Price}"}</p>
         </div>
-        <Button>
+        <Button disabled = {!isValid} type = "submit">
             SİPARİŞ VER
         </Button>
     </section>
     </div>
-    </div>
+    </form>
     )
 }
 

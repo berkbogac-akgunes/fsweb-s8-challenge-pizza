@@ -4,7 +4,7 @@ import { Button, ButtonGroup, FormFeedback, Label } from "reactstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Check from "./Check"
 import axios from "axios"
-import { NavLink } from "react-router-dom"
+import { NavLink, useHistory } from "react-router-dom"
 const initialForm = {
     boyut: "",
     hamur: "",
@@ -158,10 +158,12 @@ function Form() {
             }
         }
     }
+    const history = useHistory()
+
     function handleSubmit(event) {
         event.preventDefault();
         axios
-          .post('https://reqres.in/api/pizza', formData)
+          .post('https://reqres.in/api/pizza', formData, count)
           .then((response) => {
             console.log(
                 {
@@ -169,9 +171,11 @@ function Form() {
                     "boyut": response.data.boyut,
                     "malzemeler": response.data.malzemeler,
                     "hamur": response.data.hamur,
-                    "siparisNotu": response.data.siparisNotu
+                    "siparisNotu": response.data.siparisNotu,
+                    "adet": count
                 }
             )
+            history.push("/onay")
           })
           .catch((error) => {
             console.log(error.message)
@@ -291,11 +295,9 @@ function Form() {
         <p>Toplam</p>
         <p>{"{Price}"}</p>
         </div>
-        <NavLink to="/Onay">
             <Button disabled = {!isValid} type = "submit">
                 SİPARİŞ VER
             </Button>
-        </NavLink>
     </section>
     </div>
     </form>

@@ -4,6 +4,7 @@ import { Button, ButtonGroup, FormFeedback, Label } from "reactstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Check from "./Check"
 import axios from "axios"
+import { NavLink } from "react-router-dom"
 
 const initialForm = {
     boyut: "",
@@ -301,9 +302,11 @@ function Form() {
         <p>Toplam</p>
         <p>{"{Price}"}</p>
         </div>
-        <Button disabled = {!isValid} type = "submit">
-            SİPARİŞ VER
-        </Button>
+        <NavLink to="/Onay">
+            <Button disabled = {!isValid} type = "submit">
+                SİPARİŞ VER
+            </Button>
+        </NavLink>
     </section>
     </div>
     </form>

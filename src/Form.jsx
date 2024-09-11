@@ -28,7 +28,10 @@ function Form() {
         malzemeler: false,
         isim: false,
     })
+    
     console.log(errors)
+    console.log(formData.malzemeler)
+
     const [isValid, setIsValid] = useState(false)
 
     const increaseCount = () => { 
@@ -94,13 +97,13 @@ function Form() {
         label: "Sarımsak"
     }]
 
-
     useEffect(() => {
         if(
-            formData.boyut && 
-            formData.hamur &&
-            formData.isim.replaceAll(" ", "").length >= 3 &&
-            formData.malzemeler.length >= 4 && formData.malzemeler.length <= 10
+            !errors.boyut && 
+            !errors.hamur &&
+            formData.isim.length >= 3 &&
+            formData.malzemeler.length >= 4 &&
+            formData.malzemeler.length <= 10
         ) {
             setIsValid(true)
         } else {
@@ -109,20 +112,17 @@ function Form() {
     }, [formData])
 
     function handleChange(event) {
-        let { name, value, type, checked } = event.target;
+        let { name, value, type } = event.target;
+        let newValue;
 
         if (type === 'checkbox') {
             if (formData.malzemeler.includes(value)) {
-              setFormData({
-                ...formData,
-                [name]: formData.malzemeler.filter((malzeme) => malzeme !== value),
-              });
+              newValue = formData.malzemeler.filter((malzeme) => malzeme !== value)
             } else {
-              setFormData({
-                ...formData,
-                [name]: [...formData.malzemeler, value],
-              });
-            }
+              newValue = [...formData.malzemeler, value]
+              };
+          
+            setFormData({...formData.malzemeler, [name]: newValue})
           } else {
             setFormData({ ...formData, [name]: value });
           }
@@ -151,17 +151,8 @@ function Form() {
             }
         }
 
-        if(name === "hamur") {
-            if(value) {
-                setErrors({...errors, [name]: false})
-            } else {
-                setErrors({...errors, [name]: true})
-            }
-        }
-
         if(name === "malzemeler") {
-            if(formData.malzemeler.length < 4 || formData.malzemeler.length > 10) {
-                //there is a problem here with checks? Prob about Async State
+            if(newValue.length < 4 || newValue.length > 10) {
                 setErrors({...errors, [name]: true})
             } else {
                 setErrors({...errors, [name]: false})
@@ -188,6 +179,7 @@ function Form() {
             console.log(error.message)
           });
       }
+      console.log("isValid: " + isValid)
     return(
         <form className = "form" onSubmit={handleSubmit}>
             <section className = "menu-content">
@@ -257,7 +249,7 @@ function Form() {
             label = {malzeme.label}
         />
         )}
-        <p className = "error">{errors.malzemeler && errorMessages.malzemeler}</p>
+        {errors.malzemeler && <p className="error">{errorMessages.malzemeler}</p>}
     </div>
     </section>
     <section className = "isim-info">
@@ -302,11 +294,9 @@ function Form() {
         <p>Toplam</p>
         <p>{"{Price}"}</p>
         </div>
-        <NavLink to="/Onay">
-            <Button disabled = {!isValid} type = "submit">
-                SİPARİŞ VER
-            </Button>
-        </NavLink>
+        <Button disabled = {!isValid} type = "submit">
+            SİPARİŞ VER
+        </Button>
     </section>
     </div>
     </form>

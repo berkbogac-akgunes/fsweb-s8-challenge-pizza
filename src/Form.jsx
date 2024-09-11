@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Check from "./Check"
 import axios from "axios"
 import { NavLink } from "react-router-dom"
-
 const initialForm = {
     boyut: "",
     hamur: "",
@@ -13,12 +12,10 @@ const initialForm = {
     siparisNotu: "",
     isim: ""
 }
-
 const errorMessages = {
     isim: 'İsim en az 3 harf olmalı.',
     malzemeler: "Lütfen en az 4, en fazla 10 malzeme seçiniz."
 }
-
 function Form() {
     const [formData, setFormData] = useState(initialForm)
     const [count, setCount] = useState(1);
@@ -28,10 +25,7 @@ function Form() {
         malzemeler: false,
         isim: false,
     })
-    
     console.log(errors)
-    console.log(formData.malzemeler)
-
     const [isValid, setIsValid] = useState(false)
 
     const increaseCount = () => { 
@@ -43,7 +37,6 @@ function Form() {
             setCount(count - 1);
         } 
       }; 
-
     const ing = [{
         value: "pepperoni",
         label: "Pepperoni"
@@ -97,13 +90,13 @@ function Form() {
         label: "Sarımsak"
     }]
 
+
     useEffect(() => {
         if(
-            !errors.boyut && 
-            !errors.hamur &&
-            formData.isim.length >= 3 &&
-            formData.malzemeler.length >= 4 &&
-            formData.malzemeler.length <= 10
+            formData.boyut && 
+            formData.hamur &&
+            formData.isim.replaceAll(" ", "").length >= 3 &&
+            formData.malzemeler.length >= 4 && formData.malzemeler.length <= 10
         ) {
             setIsValid(true)
         } else {
@@ -112,21 +105,20 @@ function Form() {
     }, [formData])
 
     function handleChange(event) {
-        let { name, value, type } = event.target;
+        let { name, value, type, checked } = event.target;
         let newValue;
-
         if (type === 'checkbox') {
             if (formData.malzemeler.includes(value)) {
-              newValue = formData.malzemeler.filter((malzeme) => malzeme !== value)
+                newValue = formData.malzemeler.filter((malzeme) => malzeme !== value)
             } else {
-              newValue = [...formData.malzemeler, value]
-              };
-          
-            setFormData({...formData.malzemeler, [name]: newValue})
+                newValue = [...formData.malzemeler, value]
+            };
+
+            setFormData({...formData, [name]: newValue})
+
           } else {
             setFormData({ ...formData, [name]: value });
           }
-
         if(name === "isim") {
             if(value.replaceAll(" ", "").length < 3) {
                 setErrors({...errors, [name]: true})
@@ -134,8 +126,14 @@ function Form() {
                 setErrors({...errors, [name]: false})
             }
         }
-
         if(name === "boyut") {
+            if(value) {
+                setErrors({...errors, [name]: false})
+            } else {
+                setErrors({...errors, [name]: true})
+            }
+        }
+        if(name === "hamur") {
             if(value) {
                 setErrors({...errors, [name]: false})
             } else {
@@ -153,13 +151,13 @@ function Form() {
 
         if(name === "malzemeler") {
             if(newValue.length < 4 || newValue.length > 10) {
+                //there is a problem here with checks? Prob about Async State
                 setErrors({...errors, [name]: true})
             } else {
                 setErrors({...errors, [name]: false})
             }
         }
     }
-
     function handleSubmit(event) {
         event.preventDefault();
         axios
@@ -179,7 +177,6 @@ function Form() {
             console.log(error.message)
           });
       }
-      console.log("isValid: " + isValid)
     return(
         <form className = "form" onSubmit={handleSubmit}>
             <section className = "menu-content">
@@ -249,7 +246,7 @@ function Form() {
             label = {malzeme.label}
         />
         )}
-        {errors.malzemeler && <p className="error">{errorMessages.malzemeler}</p>}
+        <p className = "error">{errors.malzemeler && errorMessages.malzemeler}</p>
     </div>
     </section>
     <section className = "isim-info">
@@ -294,13 +291,14 @@ function Form() {
         <p>Toplam</p>
         <p>{"{Price}"}</p>
         </div>
-        <Button disabled = {!isValid} type = "submit">
-            SİPARİŞ VER
-        </Button>
+        <NavLink to="/Onay">
+            <Button disabled = {!isValid} type = "submit">
+                SİPARİŞ VER
+            </Button>
+        </NavLink>
     </section>
     </div>
     </form>
     )
 }
-
 export default Form

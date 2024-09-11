@@ -1,0 +1,42 @@
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+  }
+  a:hover {
+    color: #535bf2;
+  }
+
+  .onay-content {
+    display: flex;
+    min-width: 320px;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: start;
+    padding: 0 80px;
+    background-color: #FAF7F2;
+    font-size: 2rem;
+    text-align: center;
+    background-color: #CE2829;
+  }
+
+  .onay-content h2 {
+    margin: 2rem 0 15rem 0;
+  }
+
+  .info-message {
+    font-family: "Roboto Condensed";
+  }
+  
+  .header2 {
+    font-size: 3.2em;
+    line-height: 1.1;
+    font-family: "Quattrocento";
+    color: white
+  }
+  
+  .header1 {
+    font-size: 2em;
+    font-family: "Barlow";
+    color: white
+  }

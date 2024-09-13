@@ -202,6 +202,7 @@ function Form() {
         <div className = "boyut-hamur-section">
         <section className = "boyut-section">
         <h3>Boyut Seç</h3>
+            <div className = "boyut-container">
             <Label>
                 <input
                     type = "radio"
@@ -211,6 +212,8 @@ function Form() {
                 />
                 Küçük
             </Label>
+            </div>
+            <div className = "boyut-container">
             <Label>
                 <input
                     type = "radio"
@@ -220,6 +223,8 @@ function Form() {
                 />
                 Orta
             </Label>
+            </div>
+            <div className = "boyut-container">
             <Label>
                 <input
                     type = "radio"
@@ -230,6 +235,7 @@ function Form() {
                 />
                 Büyük
             </Label>
+            </div>
             <p className = "error">{errors.boyut && errorMessages.boyut}</p>
     </section>
     <section className = "hamur-section">

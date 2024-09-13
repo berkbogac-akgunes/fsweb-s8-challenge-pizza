@@ -1,3 +1,19 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: white;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
 a {
     font-weight: 500;
     color: #646cff;
@@ -64,4 +80,367 @@ a {
   button {
     display: block;
     margin: auto;
+  }
+
+  .card {
+    padding: 2em;
+  }
+  
+  .read-the-docs {
+    color: #888;
+  }
+  
+  button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  button:hover {
+    border-color: #646cff;
+  }
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+  
+  .header-content{
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  #app {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+  .logo.vanilla:hover {
+    filter: drop-shadow(0 0 2em #f7df1eaa);
+  }
+  
+  button {
+    display: block;
+    margin: auto;
+  }
+  
+  .cesitler-section {
+    background-color: white;
+    width: 100%;
+  }
+  
+  .cesitler-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem 10rem;
+    font-size: 3rem;
+  }
+  
+  .cesitler-card {
+    width: 20%;
+    padding: 4rem;
+    column-gap: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    font-size: 2rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: black;
+  }
+  
+  .cesitler-card img {
+    width: 3rem;
+  }
+  
+  .menu-section {
+    width: 100%;
+    background-color: white;
+  }
+  
+  .menu-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .menu-card1 {
+    background-image: url(Assets/iteration-2-aseets/cta/kart-1.png);
+    width: 50%;
+    height: 40vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: left;
+    border-radius: 50px;
+    color: black;
+    padding: 1.2rem;
+  }
+  
+  .menu-card2 {
+    background-image: url(Assets/iteration-2-aseets/cta/kart-2.png);
+    width: 50%;
+    height: 40vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: left;
+    border-radius: 50px;
+    color: black;
+    padding: 1.2rem;
+  }
+  
+  .menu-card3 {
+    background-image: url(Assets/iteration-2-aseets/cta/kart-3.png);
+    width: 50%;
+    height: 40vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: left;
+    border-radius: 50px;
+    padding: 1.2rem;
+  }
+  
+  .yiyecek-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .menuHeader1, .menuHeader2, .menuHeader3 {
+    font-size: 3.5rem;
+    font-family: Quattrocento;
+  }
+  
+  .menuHeader3 {
+    color: black;
+  }
+  
+  .menuButton1 {
+    display: flex;
+    background-color: white;
+    color: #CE2829;
+    border-radius: 100px;
+    margin: 4rem auto;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .menuButton2 {
+    display: flex;
+    background-color: white;
+    color: #CE2829;
+    border-radius: 100px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .menuButton3 {
+    display: flex;
+    background-color: white;
+    color: #CE2829;
+    border-radius: 100px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .menuText1 {
+    font-family: Barlow;
+    font-size: 1.5rem;
+  }
+  
+  .cesitler-section2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #FAF7F2;
+    padding: 1rem;
+  }
+  
+  .cesitler2-text {
+    font-size: 2.5rem;
+    font-family: satisfy;
+  }
+  
+  .cesitler2-heading {
+    font-size: 3.5rem;
+    font-family: Barlow;
+    color: black;
+  }
+  
+  .cesitler-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    font-size: 2rem;
+    gap: 2.5rem 17rem;
+  }
+  
+  .cesitler2-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    background-color: white;
+    color: black;
+    border-radius: 60px;
+    height: 6rem;
+  }
+  
+  .yiyecek-section {
+    background-color: #FAF7F2;
+    width: 100%;
+    margin: 2rem;
+  }
+  
+  .yiyecek-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .yiyecek-card {
+    background-color: white;
+    border-radius: 30px;
+    padding: 1rem;
+    max-width: 18%;
+  }
+  
+  .yiyecek-text {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    color: #292929;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  
+  .yiyecek-text2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  
+  h4 {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+    font-family: Barlow;
+    font-size: 2rem;
+    color: #292929;
+  }
+  
+  footer {
+    width: 100%;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 5rem;
+    background-color: #5F5F5F;
+  }
+  
+  .footer-heading {
+    font-family: Barlow;
+  }
+  
+  .footer-section1 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-card1 {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .footer-card1 p {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 15%;
+    font-family: "Roboto Condensed"
+  }
+  
+  .footer-card1 img {
+    margin: auto 0.5rem;
+  }
+  
+  .footer-section2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  
+  h5 {
+    font-size: 1.5rem;
+    font-family: Barlow;
+    margin: 1rem;
+  }
+  
+  .footer-section2 ul li {
+    font-family: "Roboto Condensed";
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem;
+  }
+  
+  .footer-container a {
+    font-size: 1.5rem;
+    color: white;
+    margin: 0.5rem;
+  }
+  
+  .footer-photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    width: 30%;
+    border-bottom: 0.5px solid #292929;
+  }
+  
+  .footer-photos img {
+    width: 30%;
+    margin: 1rem auto;
+  }
+  
+  @media (prefers-color-scheme: light) {
+    :root {
+      color: #213547;
+      background-color: #ffffff;
+    }
+    a:hover {
+      color: #747bff;
+    }
+    button {
+      background-color: #f9f9f9;
+    }
   }

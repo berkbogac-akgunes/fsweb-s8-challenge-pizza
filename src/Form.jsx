@@ -184,15 +184,20 @@ function Form() {
     return(
         <form className = "form" onSubmit={handleSubmit}>
             <section className = "menu-content">
-                <h4>{"{Menu İsmi}"}</h4>
+                <h4>Position Absolute Acı Pizza</h4>
                 <div className = "menu-info">
-                <p className = "menu-fiyat">{"{Menu Fiyatı}"}</p>
+                <p className = "menu-fiyat">85.50₺</p>
                     <div className = "menu-info-right">
-                        <p>{"{Menu Puanı}"}</p>
-                        <p>{"{Menu Puanı}"}</p>
+                        <p>4.9</p>
+                        <p>(200)</p>
                     </div>
                 </div>
-                <p className = "menu-aciklamasi">{"{Menu Açıklaması}"}</p>
+                <p className = "menu-aciklamasi">
+                    Frontend Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle
+                    çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen,
+                    genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir.. Küçük bir
+                    pizzaya bazen pizzetta denir.
+                </p>
             </section>
         <div className = "boyut-hamur-section">
         <section className = "boyut-section">
@@ -289,11 +294,11 @@ function Form() {
         <h5>Sipariş Toplamı</h5>
         <div className = "secimler-fiyat-section">
             <p>Seçimler</p>
-            <p>{"{Price}"}</p>
+            <p>25.00₺</p>
         </div>
         <div className = "toplam-fiyat-section">
         <p>Toplam</p>
-        <p>{"{Price}"}</p>
+        <p>110.50₺</p>
         </div>
             <Button disabled = {!isValid} type = "submit">
                 SİPARİŞ VER

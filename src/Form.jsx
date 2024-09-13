@@ -231,7 +231,6 @@ function Form() {
                     name = "boyut"
                     value = "large"
                     onChange = {handleChange}
-                    invalid = {true}
                 />
                 Büyük
             </Label>
